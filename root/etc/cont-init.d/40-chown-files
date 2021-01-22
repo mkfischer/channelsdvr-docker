@@ -1,18 +1,18 @@
 #!/usr/bin/with-contenv bash
 
 # create folders
-if [ ! -d "/channels-dvr/data" ]; then
-  mkdir -p "/channels-dvr"
+if [ ! -d "/media/dvr/data" ]; then
+  mkdir -p "/media/dvr"
   curl -f -s https://getchannels.com/dvr/setup.sh | DOWNLOAD_ONLY=1 sh
   chown -R abc:abc /channels-dvr
 fi
 
 # check channels-dvr permissions
 PUID=${PUID:PGID}
-if [ ! "$(stat -c %u /channels-dvr/data)" = "$PUID" ]; then
+if [ ! "$(stat -c %u /media/dvr/data)" = "$PUID" ]; then
   echo "Change in ownership detected, please be patient while we chown existing files"
   echo "This could take some time"
-  chown abc:abc -R \
-  /channels-dvr
+  chown channeluser:channeluser -R \
+  /media/dvr
 fi
 

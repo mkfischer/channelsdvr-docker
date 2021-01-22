@@ -4,8 +4,8 @@
 UMASK_SET=${UMASK_SET:-022}
 
 umask "$UMASK_SET"
-export HOME=/channels-dvr
+export HOME=/media/dvr
 echo "Running Channels DVR"
 exec \
-  s6-setuidgid abc /bin/bash -c \
-  'cd /channels-dvr/data && ../latest/channels-dvr >> channels-dvr.log 2>&1'
+  s6-setuidgid channeluser /bin/bash -c \
+  'cd /media/dvr/data && ../latest/channels-dvr >> channels-dvr.log 2>&1'
