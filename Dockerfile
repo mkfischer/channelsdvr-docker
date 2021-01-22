@@ -18,7 +18,7 @@ RUN echo "**** install stuff ****" \
   && echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list \
   && apt update \
   && apt install -y --no-install-recommends google-chrome-stable \
-  && useradd -msd /bin/bash /media/dvr channeluser \
+  && useradd -md /media/dvr channeluser \
   && curl -f -s https://getchannels.com/dvr/setup.sh | DOWNLOAD_ONLY=1 sh \
   && usermod -d /media/dvr channeluser \
   && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
